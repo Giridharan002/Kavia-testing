@@ -23,3 +23,19 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', () => {
+  cy.fixture('url.json').then((urlData) => {
+    cy.visit(`${urlData.baseUrl}${urlData.loginUrl}`);
+    
+    // Use Cypress.env() instead of process.env
+    // Or use hardcoded values as fallback
+    const username = Cypress.env('USERNAME') || 'derrick@kavia.ai';
+    const password = Cypress.env('PASSWORD') || 'Samuel@1996';
+    
+    cy.get('#username').type(username);
+    cy.get('[placeholder="Password"]').type(password);
+    cy.get('button[type="submit"]').click();
+    cy.url({ timeout: 100000 }).should('include', urlData.dashboardUrl);
+  });
+});

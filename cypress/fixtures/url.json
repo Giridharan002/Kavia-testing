@@ -1,0 +1,6 @@
+{
+    "baseUrl": "https://qa.worktool.kavia.ai",
+    "loginUrl": "/login?tenant_id=g5StFHvCyj0Hf9g8j87nGA",
+    "dashboardUrl": "/dashboard/groups",
+    "homeUrl": "/home?tab=recentprojects"
+}
